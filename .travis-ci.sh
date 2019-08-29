@@ -20,16 +20,17 @@ opam install ${OPAM_PACKAGES}
 
 eval `opam config env`
 
-# Post-boilerplate
-git clone http://github.com/robhoes/elo-ladder
-cd elo-ladder
-make
-
 curl -o players.csv "https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/gviz/tq?tqx=out:csv&sheet=Players"
 tail -n +2 players.csv | tr -d \" | tr 'TRUE' 'true' > players
 
 curl -o games.csv "https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/gviz/tq?tqx=out:csv&sheet=Games"
 tail -n +2 games.csv | tr -d \" > games
+
+# Post-boilerplate
+git clone http://github.com/robhoes/elo-ladder
+cd elo-ladder
+make
+
 
 ./ladder print --gh-pages --game pool --title "Dover St Pool Ladder" ../players ../games --reverse > index.md
 ./ladder json --game pool ../players ../games > ladder.json
