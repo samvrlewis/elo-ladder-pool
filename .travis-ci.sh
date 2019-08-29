@@ -18,7 +18,7 @@ opam --git-version
 opam init 
 opam install ${OPAM_PACKAGES}
 
-eval `opam config -env`
+eval `opam config env`
 
 # Post-boilerplate
 git clone http://github.com/robhoes/elo-ladder
