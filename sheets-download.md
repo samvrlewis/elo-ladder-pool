@@ -1,0 +1,1 @@
+https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/gviz/tq?tqx=out:csv&sheet=Players
