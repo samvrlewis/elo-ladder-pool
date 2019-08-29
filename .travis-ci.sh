@@ -24,7 +24,7 @@ eval `opam config env`
 git clone http://github.com/robhoes/elo-ladder
 cd elo-ladder
 make
-./ladder print --gh-pages --game pool --title "XenServer Pool Ladder" ../players ../games --reverse > index.md
+./ladder print --gh-pages --game pool --title "Dover St Pool Ladder" ../players ../games --reverse > index.md
 ./ladder json --game pool ../players ../games > ladder.json
 (echo set terminal png; ./ladder history --game pool --format=gnuplot ../players ../games) | gnuplot > ladder.png
 
