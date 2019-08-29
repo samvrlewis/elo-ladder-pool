@@ -1,20 +1,12 @@
+#!/bin/bash
+
 # OPAM packages needed to build tests.
 OPAM_PACKAGES="cmdliner"
 
 
-case "$OCAML_VERSION,$OPAM_VERSION" in
-3.12.1,1.0.0) ppa=avsm/ocaml312+opam10 ;;
-3.12.1,1.1.0) ppa=avsm/ocaml312+opam11 ;;
-4.00.1,1.0.0) ppa=avsm/ocaml40+opam10 ;;
-4.00.1,1.1.0) ppa=avsm/ocaml40+opam11 ;;
-4.01.0,1.0.0) ppa=avsm/ocaml41+opam10 ;;
-4.01.0,1.1.0) ppa=avsm/ocaml41+opam11 ;;
-*) echo Unknown $OCAML_VERSION,$OPAM_VERSION; exit 1 ;;
-esac
-
-echo "yes" | sudo add-apt-repository ppa:$ppa
+echo "yes" | sudo add-apt-repository ppa:avsm/ppa
 sudo apt-get update -qq
-sudo apt-get install -qq ocaml ocaml-native-compilers camlp4-extra opam gnuplot m4
+sudo apt-get install -qq ocaml ocaml-findlib ocaml-native-compilers camlp4-extra opam gnuplot m4
 export OPAMYES=1
 export OPAMVERBOSE=1
 echo OCaml version
@@ -52,7 +44,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git config --global user.name "Travis"
 
   #using token clone gh-pages branch
-  git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/simonjbeaumont/elo-ladder-pool.git  gh-pages > /dev/null
+  git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/samvrlewis/elo-ladder-pool.git  gh-pages > /dev/null
 
   #go into directory and copy data we're interested in to that directory
   cd gh-pages
@@ -66,5 +58,5 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git commit --allow-empty -am "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
   git push -fq origin gh-pages > /dev/null
 
-  echo -e "Updated simonjbeaumont/elo-ladder-pool's gh-pages with latest ladder\n"
+  echo -e "Updated samvrlewis's/elo-ladder-pool's gh-pages with latest ladder\n"
 fi
