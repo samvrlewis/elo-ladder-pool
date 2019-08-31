@@ -240,8 +240,7 @@ function refresh_stats_table(div, x)
 			]
 		}
 	});
-	var avg = average_result(wins, draws, losses, count);
-	rows.push(["", "", bold(count), bold(wins), bold(draws), bold(losses), bold(avg)]);
+	
 
 	var table = make_table(rows, ["Player 1", "Player 2", "Games", "Wins*", "Draws*", "Losses*", "Average Result*"]);
 	if (div.hasChildNodes()) {
