@@ -23,7 +23,7 @@ curl -o players.csv "https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_Oaz
 tail -n +2 players.csv | tr -d \" | sed -e 's/TRUE/true/g' > players
 
 curl -o games.csv "https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/gviz/tq?tqx=out:csv&sheet=Games"
-tail -n +2 games.csv | tr -d \" | awk '{ printf("%s,1\n", $0); }' > games
+tail -n +2 games.csv | tr -d \" | tr '[:upper:]' '[:lower:]' | awk '{ printf("%s,1\n", $0); }' > games
 
 # Post-boilerplate
 git clone http://github.com/robhoes/elo-ladder
