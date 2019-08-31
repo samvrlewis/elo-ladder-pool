@@ -58,7 +58,7 @@ function make_table(rows, header)
 
 function set_last_updated()
 {
-    document.getElementById('last_updatedd').innerHTML = last_updated;
+    document.getElementById('last_updated').innerHTML = last_updated;
 }
 
 function build_ladder()
