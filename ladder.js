@@ -125,7 +125,7 @@ function refresh_games_table(div, x)
 		]}
 	);
 
-	var table = make_table(rows, ["Date", "White", "Black", "Result"]);
+	var table = make_table(rows, ["Date", "Player 1", "Player 2", "Result"]);
 	if (div.hasChildNodes())
 		div.removeChild(div.firstChild);
 	div.appendChild(table);
@@ -232,23 +232,21 @@ function refresh_stats_table(div, x)
 				p.wins,
 				p.draws,
 				p.losses,
-				average_result(p.wins, p.draws, p.losses, p.count),
-				p.balance
+				average_result(p.wins, p.draws, p.losses, p.count)
 			]
 		}
 	});
 	var avg = average_result(wins, draws, losses, count);
-	rows.push(["", "", bold(count), bold(wins), bold(draws), bold(losses), bold(avg), bold(balance)]);
+	rows.push(["", "", bold(count), bold(wins), bold(draws), bold(losses), bold(avg)]);
 
-	var table = make_table(rows, ["Player 1", "Player 2", "Games", "Wins*", "Draws*", "Losses*", "Average Result*", "Colour Balance**"]);
+	var table = make_table(rows, ["Player 1", "Player 2", "Games", "Wins*", "Draws*", "Losses*", "Average Result*"]);
 	if (div.hasChildNodes()) {
 		div.removeChild(div.firstChild);
 		div.removeChild(div.firstChild);
 	}
 	div.appendChild(table);
 
-	div.innerHTML += "<p>* For Player 1.<br />\
-		** The number of games Player 1 had white minus the number of games Player 2 had white.</p>";
+	div.innerHTML += "<p>* For Player 1.<br /></p>";
 }
 
 function build_stats()
