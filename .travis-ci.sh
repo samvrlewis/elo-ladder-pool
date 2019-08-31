@@ -3,7 +3,6 @@
 # OPAM packages needed to build tests.
 OPAM_PACKAGES="cmdliner"
 
-
 echo "yes" | sudo add-apt-repository ppa:avsm/ppa
 sudo apt-get update -qq
 sudo apt-get install -qq ocaml ocaml-findlib ocaml-native-compilers camlp4-extra opam gnuplot m4
@@ -21,16 +20,16 @@ opam install ${OPAM_PACKAGES}
 eval `opam config env`
 
 curl -o players.csv "https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/gviz/tq?tqx=out:csv&sheet=Players"
-tail -n +2 players.csv | tr -d \" | tr 'TRUE' 'true' > players
+tail -n +2 players.csv | tr -d \" | sed -e 's/TRUE/true/g' > players
 
 curl -o games.csv "https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/gviz/tq?tqx=out:csv&sheet=Games"
-tail -n +2 games.csv | tr -d \" > games
+tail -n +2 games.csv | tr -d \" | awk '{ printf("%s,1\n", $0); }' > games
 
 # Post-boilerplate
 git clone http://github.com/robhoes/elo-ladder
 cd elo-ladder
+sed -i 's/XenServer/Dover Street/' ladder.ml
 make
-
 
 ./ladder print --gh-pages --game pool --title "Dover St Pool Ladder" ../players ../games --reverse > index.md
 ./ladder json --game pool ../players ../games > ladder.json
