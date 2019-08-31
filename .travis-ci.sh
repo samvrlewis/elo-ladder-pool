@@ -56,10 +56,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   #go into directory and copy data we're interested in to that directory
   cd gh-pages
   #cp -f $HOME/index.html .
-  cp -f $HOME/ladder.js .
   cp -f $HOME/ladder.json .
   cp -f $HOME/ladder.png .
-  cp -f $HOME/style.css .
 
   #add, commit and push files
   git commit --allow-empty -am "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
