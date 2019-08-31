@@ -267,7 +267,7 @@ function build_stats()
 function build_graph()
 {
 	var div = document.getElementById("results");
-	div.innerHTML = '<h2>Graph</h2><a href="ladder.png"><img src="ladder.png" style="width:500px" /></a>';
+	div.innerHTML = '<h2>Graph</h2><a href="ladder.png"><img src="ladder.png"/></a>';
 }
 
 function build()
