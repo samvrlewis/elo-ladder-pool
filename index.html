@@ -2,22 +2,28 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<script type="text/javascript" src="ladder.json"></script>
+	<script type="text/javascript" src="last_updated.js"></script>
 	<script type="text/javascript" src="ladder.js"></script>
 	<link rel="stylesheet" href="style.css" />
 	<title>Dover Street Pool Ladder</title>
 </head>
-<body onload="build()">
+<body onload="build(); set_last_updated()">
 <div class="wrapper">
 <header>
 	<h2 id="getting_involved">Join the club</h2>
 
-	<p>This page is automatically updated as a result of editing <a href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=0">a spreadsheet</a>. To join in, request edit access to the record keeping spreadsheet and then.. </p>
+	<p>This page is automatically updated as a result of editing <a href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=0">a spreadsheet</a>. To join in, <strong>request edit access</strong> to the record keeping spreadsheet and then: </p>
 
-	<p>To join the ladder, add yourself to the <a href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=0">players</a> sheet with a starting rating of 1500.</p>
+	<ul>
+		<li><a href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=0">Add a <strong>Player</strong></a></li>
+		<li><a href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=304273404s">Add a <strong>Game</strong></a></li>
+	</ul>
 
-	<p>To add the result of a game, edit the <a href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=304273404s">games</a> sheet in the same spreadsheet.</p>
+	<p>The rating system uses the <a href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo rating system</a>.</p>
 
-	<p>This website is updated daily with the previous day's recorded games.</p>
+	<p>This website is updated daily with the previous day's recorded games. Last updated: <strong id="last_updatedd"></strong></p>
+
+	<p>For any rules enquiries please consult pool rules grandmaster Sean.</p>
 </header>
 
 <section>

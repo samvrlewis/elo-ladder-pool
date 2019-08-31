@@ -56,6 +56,11 @@ function make_table(rows, header)
 	return table
 }
 
+function set_last_updated()
+{
+    document.getElementById('last_updatedd').innerHTML = last_updated;
+}
+
 function build_ladder()
 {
 	var div = document.getElementById('results');
@@ -93,7 +98,7 @@ function build_ladder()
 	}
 
 	var rows = build_rows(active_players, true);
-	var table = make_table(rows, ["Rank", "Name", "Rating", "Diff", "Score / Games"]);
+	var table = make_table(rows, ["Rank", "Name", "Rating", "Last Change", "Score / Games"]);
 	div.appendChild(table);
 
 	div.innerHTML += "<h2>Retired Players</h2>";
