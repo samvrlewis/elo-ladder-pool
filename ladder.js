@@ -120,12 +120,11 @@ function refresh_games_table(div, x)
 		return [
 			p.date,
 			p.name1,
-			p.name2,
-			string_of_result(p.result)
+			p.name2
 		]}
 	);
 
-	var table = make_table(rows, ["Date", "Player 1", "Player 2", "Result"]);
+	var table = make_table(rows, ["Date", "Winner", "Loser"]);
 	if (div.hasChildNodes())
 		div.removeChild(div.firstChild);
 	div.appendChild(table);
