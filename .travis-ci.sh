@@ -38,12 +38,12 @@ make
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo -e "Starting to update gh-pages\n"
 
+  
+
   #copy data we're interested in to other place
   #cp index.html $HOME/index.html
-  cp ladder.js $HOME/ladder.js
   cp ladder.json $HOME/ladder.json
   cp ladder.png $HOME/ladder.png
-  cp style.css $HOME/style.css
 
   #go to home and setup git
   cd $HOME
@@ -58,6 +58,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   #cp -f $HOME/index.html .
   cp -f $HOME/ladder.json .
   cp -f $HOME/ladder.png .
+  echo "last_updated=\"$(env TZ=Australia/Melbourne date)\";" > last_updated.js
 
   #add, commit and push files
   git commit --allow-empty -am "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
