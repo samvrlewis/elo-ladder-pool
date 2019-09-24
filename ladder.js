@@ -78,15 +78,22 @@ function build_ladder()
 			var diff = 0;
 			if (p.ratings.length > 1)
 				diff = Math.round(last - p.ratings[1]);
-			if (active)
+			if (active) {
+				var win_percentage = 0;
+				
+				if (p.game_count > 0) {
+					win_percentage = Math.round(p.points_won / p.game_count * 100);
+				}
+				
 				return [
 					i++,
 					p.name,
 					Math.round(last),
 					motion(diff),
-					p.points_won + " / " + p.game_count
+					p.points_won + " / " + p.game_count,
+					win_percentage + "%"
 				]
-			else
+			} else
 				return [
 					p.name,
 					Math.round(last),
@@ -98,7 +105,11 @@ function build_ladder()
 	}
 
 	var rows = build_rows(active_players, true);
-	var table = make_table(rows, ["Rank", "Name", "Rating", "Last Change", "Score / Games"]);
+
+	rows[0][0] = '<img src="trophy.png" />';
+	rows[rows.length - 1][0] = '<img src="spoon.png" />';
+		
+	var table = make_table(rows, ["Rank", "Name", "Rating", "Last Change", "Score / Games", "Win %"]);
 	div.appendChild(table);
 
 	div.innerHTML += "<h2>Retired Players</h2>";
