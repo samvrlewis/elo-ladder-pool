@@ -70,6 +70,31 @@ function build_ladder()
 	var active_players = players.filter(function(a){return a.active});
 	var inactive_players = players.filter(function(a){return !a.active});
 
+	function find_streak(ratings) {
+			if (ratings.length < 2) {
+				return 0
+			}
+			
+			var last = ratings[0];
+			var streak = 0;
+			
+			for (var i=1; i < ratings.length; i++)
+			{
+				var diff = last - ratings[i];
+				last = ratings[i];
+				
+				if (diff > 0 && streak >= 0) {
+					streak++;
+				} else if (diff < 0 && streak <= 0) {
+					streak--;
+				} else {
+					break;
+				}
+			}
+			
+			return streak;
+	}
+	
 	function build_rows(ps, active)
 	{
 		var i = 1;
@@ -91,7 +116,8 @@ function build_ladder()
 					Math.round(last),
 					motion(diff),
 					p.points_won + " / " + p.game_count,
-					win_percentage + "%"
+					win_percentage + "%",
+					find_streak(p.ratings)
 				]
 			} else
 				return [
@@ -101,20 +127,29 @@ function build_ladder()
 				]
 		}
 		);
+		
 		return rows;
 	}
-
+	
 	var rows = build_rows(active_players, true);
-
+	
+	var best_streak = rows.reduce(function(prev, current) {
+		return (prev[6] > current[6]) ? prev : current
+	});
+	
+	var worst_streak = rows.reduce(function(prev, current) {
+		return (prev[6] < current[6]) ? prev : current
+	});
+		
 	rows[0][0] = '<img src="trophy.png" />';
 	rows[rows.length - 1][0] = '<img src="spoon.png" />';
-		
-	var table = make_table(rows, ["Rank", "Name", "Rating", "Last Change", "Score / Games", "Win %"]);
-	div.appendChild(table);
-
-	div.innerHTML += "<h2>Retired Players</h2>";
-	var rows = build_rows(inactive_players, false);
-	var table = make_table(rows, ["Name", "Rating", "Score / Games"]);
+	
+	worst_streak[0] += ' 🧊';
+	best_streak[0] += ' 🔥';
+	
+	var streak = '<div class="tooltip">Streak<span class="tooltiptext">Positive numbers indicate a win streak, negative numbers indicate a loss streak.</span></div>'
+	
+	var table = make_table(rows, ["Rank", "Name", "Rating", "Last Change", "Score / Games", "Win %", streak]);
 	div.appendChild(table);
 }
 
