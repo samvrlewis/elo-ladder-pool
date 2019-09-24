@@ -117,7 +117,8 @@ function build_ladder()
 					motion(diff),
 					p.points_won + " / " + p.game_count,
 					win_percentage + "%",
-					find_streak(p.ratings)
+					find_streak(p.ratings),
+					""
 				]
 			} else
 				return [
@@ -144,16 +145,16 @@ function build_ladder()
 	rows[0][0] = '<img src="trophy.png" />';
 	rows[rows.length - 1][0] = '<img src="spoon.png" />';
 	
-	worst_streak[0] += ' 🧊';
-	best_streak[0] += ' 🔥';
+	worst_streak[7] += '🧊';
+	best_streak[7] += '🔥';
 	
 	for (var i=0; i < rows.length; i++) {
 		rows[i][6] = motion(rows[i][6]);	
 	}
 	
-	var streak = '<div class="tooltip">Win/Loss Streak<span class="tooltiptext">Positive numbers indicate a win streak, negative numbers indicate a loss streak.</span></div>'
+	var streak = '<div class="tooltip">W/L Streak<span class="tooltiptext">Positive numbers indicate a win streak, negative numbers indicate a loss streak.</span></div>'
 	
-	var table = make_table(rows, ["Rank", "Name", "Rating", "Last Change", "Score / Games", "Win %", streak]);
+	var table = make_table(rows, ["Rank", "Name", "Rating", "Last Change", "Score / Games", "Win %", streak, ""]);
 	div.appendChild(table);
 }
 
