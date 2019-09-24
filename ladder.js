@@ -148,7 +148,7 @@ function build_ladder()
 	best_streak[0] += ' 🔥';
 	
 	for (var i=0; i < rows.length; i++) {
-		row[i][6] = motion(row[i][6]);	
+		rows[i][6] = motion(rows[i][6]);	
 	}
 	
 	var streak = '<div class="tooltip">Win/Loss Streak<span class="tooltiptext">Positive numbers indicate a win streak, negative numbers indicate a loss streak.</span></div>'
