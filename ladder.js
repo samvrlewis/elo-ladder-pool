@@ -145,7 +145,7 @@ function build_ladder()
 	rows[0][0] = '<img src="trophy.png" />';
 	rows[rows.length - 1][0] = '<img src="spoon.png" />';
 	
-	worst_streak[7] += '🧊';
+	worst_streak[7] += '❄️';
 	best_streak[7] += '🔥';
 	
 	for (var i=0; i < rows.length; i++) {
