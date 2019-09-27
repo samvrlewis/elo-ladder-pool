@@ -1,19 +1,20 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<script type="text/javascript" src="ladder.json"></script>
+	
 	<script type="text/javascript" src="last_updated.js"></script>
 	<script type="text/javascript" src="ladder.js"></script>
+	<script type="text/javascript" src="loader.js"></script>
 	<link rel="stylesheet" href="style.css" />
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 	<title>Dover Street Pool Ladder</title>
 </head>
-<body onload="build(); set_last_updated()">
+<body onload="load_games();">
 <div class="wrapper">
 <header>
 	<h2 id="getting_involved">Join the club</h2>
 
-	<p>This page is automatically updated (with a ~5 minute delay) when changes are detected on the associated <a href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=0">(Google) spreadsheet</a>. To join in, <strong>request edit access</strong> to the spreadsheet and then: </p>
+	<p>This page is automatically updated (with no delay) when changes are made to the associated <a href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=0">(Google) spreadsheet</a>. To join in, <strong>request edit access</strong> to the spreadsheet and then: </p>
 
 	<ul>
 		<li><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1GqkA-JE7a7TXrD2_OazaqU1t0FjMdXc2wO3CP1MiTCU/edit#gid=0">Add a <strong>Player</strong></a></li>
@@ -31,8 +32,6 @@
 
 
 	<p style="font-size:12px; font-style: italic">Based on <a href="https://github.com/simonjbeaumont/elo-ladder-pool">simonjbeaumont/elo-ladder-pool</a> and <a href="https://github.com/robhoes/elo-ladder">robhoes/elo-ladder</a>.</p>
-
-	<p style="font-size:12px;">Last updated: <strong id="last_updated"></strong></p>
 </header>
 
 <section>
@@ -46,6 +45,8 @@
 	</ul>
 
 	<div id="results" />
+
+	<div id="loader" class="loader"></div>
 </section>
 </div>
 </body>
